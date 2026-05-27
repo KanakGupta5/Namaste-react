@@ -1,0 +1,13 @@
+#childDiv1 {
+    border: 5px solid green;
+    margin: 20px;
+}
+
+#childDiv2 {
+    border: 5px solid green;
+    margin: 20px;
+}
+
+#parentDiv {
+    border: 1px solid blue;
+}

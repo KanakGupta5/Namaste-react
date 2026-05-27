@@ -1,0 +1,32 @@
+Q. What is Emmet?
+A. It is a popular web development toolkit and code plugin. It allows developers to write and generate HTML and CSS code at lightning speed using abbreviations.
+
+Q. Difference between a Library and Framework?
+A. Library is a collections of prewritten code snippets that can be used and reused to perform certain tasks. A particular JavaScript library code can be plugged into 
+application code which leads to faster development and fewer vulnerabilities to have errors. eg react, jQuery
+        Framework provides a basic foundation or structure for a website or an application. eg angular
+
+        A key difference between the two is Inversion of control. When using a library, the control remains with the developer who tells the application when to call 
+library functions. When using a framework, the control is reversed, which means that the framework tells the developer where code needs to be provided and calls it as 
+it requires.
+
+Q. Why is React known as React?
+A. React is a JavaScript Library. The name ‘React’ was chosen because the library was designed to allow developers to react to changes in state and data within an 
+application, and to update the user interface in a declarative and efficient manner.
+
+Q. What is diference between React and ReactDOM
+A. React: React is a javascript library, designed for building better user interfaces.
+React-DOM: React-DOM is a complimentary library to React which glues React to the browser DOM
+Whenever we use component, classes, elements, etc. We’re using React and whenever we use methods like render() or findDOMNode() we’re using React-DOM.
+Earlier the ReactDOM was part of React package, but the split happened because React has nothing to do with browsers. That’s why we’re seeing tools and frameworks like
+React-Native, React-Three being developed. These tools and frameworks don’t use React-DOM, but they do in fact use the idea behind React.
+
+Q. What is difference between react.development.js and react.production.js files via CDN?
+A. react.development.js -> 
+    a. Ideal for development environments where debugging and code clarity are priorities.
+    b. Unminified Code: Maintains readable code structure for easier debugging and understanding.
+    c. Source Maps: Generates files that link back to the original source code, making debugging easier.
+   react.production.js ->
+    a. Optimized for real-world deployment, prioritizing performance and file size
+    b. Minified Code: Significantly smaller file size by removing unnecessary whitespace and shortening variable names, leading to faster loading times.
+    c. No Source Maps: Excludes source maps for reduced file size and potential security reasons.
