@@ -3,3 +3,19 @@ Episode 1
 - Basic code with JS
 - Basic code of react with createElement
 - How to create nested elements using createElement
+
+Episode 2
+- what is npm
+- commands
+    - npm init
+    - npm install -D parcel or npm i -D parcel
+    - npm install react
+    - npm install react-dom
+    - npx parcel index.html
+- what is parcel and its job?
+- difference between dev dependencies and dependencies
+- what is package.json, package-lock.json
+- what does .parcel-cahce do?
+- what is significance of dist folder.
+- what is type="module" in <script> tag
+- what is node_modules and why it is added to .gitignore

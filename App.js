@@ -1,3 +1,5 @@
+import React from 'react';
+import ReactDOM from 'react-dom/client';
 // *********  Lecture 1 : STARTS  ******************
 //create Element that has 'Hello World'
 /* const heading = React.createElement("h1", {id: "heading"}, "Hello World from react");
@@ -17,10 +19,10 @@ console.log(heading);*/
     </div>
 </div> */}
 const parentDiv = React.createElement("div", { id: "parentDiv" }, 
-                        [React.createElement("div", { id: "childDiv1" }, 
-                            [ React.createElement("h1", {}, "I am heading 1 of child 1"),  React.createElement("h2", {}, "I am heading 2 of child 1")]),
-                        React.createElement("div", { id: "childDiv2" }, 
-                            [ React.createElement("h1", {}, "I am heading 1 of child 2"),  React.createElement("h2", {}, "I am heading 2 of child 2")])
+                        [React.createElement("div", { id: "childDiv1", key: "childDiv1" }, 
+                            [ React.createElement("h1", {key: "h1d1" }, "I am heading 1 of child 1"),  React.createElement("h2", {key: "h2d1"}, "I am heading 2 of child 1")]),
+                        React.createElement("div", { id: "childDiv2", key: "childDiv2"  }, 
+                            [ React.createElement("h1", {key: "h1d2"}, "I am heading 1 of child 2"),  React.createElement("h2", {key: "h2d2"}, "I am heading 2 of child 2")])
                         
                         ])
 const root = ReactDOM.createRoot(document.getElementById("root"));
