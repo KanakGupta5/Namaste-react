@@ -1,3 +1,5 @@
+*************************************************************** EPISODE 1 *****************************************************
+
 Q. What is Emmet?
 A. It is a popular web development toolkit and code plugin. It allows developers to write and generate HTML and CSS code at lightning speed using abbreviations.
 
@@ -30,3 +32,121 @@ A. react.development.js ->
     a. Optimized for real-world deployment, prioritizing performance and file size
     b. Minified Code: Significantly smaller file size by removing unnecessary whitespace and shortening variable names, leading to faster loading times.
     c. No Source Maps: Excludes source maps for reduced file size and potential security reasons.
+
+
+*************************************************************** EPISODE 2 *****************************************************
+
+Q. What is `NPM`?
+A. npm doesnt stand for node package manager but does the job of managing the packages. npm allow the developers to install and manage JavaScript packages and project dependencies.
+
+Q. What is `Parcel/Webpack`? Why do we need it?
+A. It is a bundler which is used to bundle multiple JS/CSS/assets into optimized output files. They also handle code splitting, tree shaking, caching, and development servers.
+
+Q. What is `.parcel-cache`
+A. .parcel-cache stores Parcel's build cache. It allows Parcel to reuse previous build information and perform faster incremental rebuilds.
+
+Q. What is `npx` ?
+A. npx executes packages. It can run locally installed packages directly from node_modules.
+
+Q. What is difference between `dependencies` vs `devDependencies`?
+A. dependencies and devDependencies are managed in package.json file. dependencies include the dependencies that are required for production eg react, react-dom but 
+   devDependencies include the dependencies that are only needed for development purpose eg jest, parcel.
+
+Q. What is Hot Module Replacement?
+A. Hot Module Replacement updates only the modified module in the browser without performing a full page reload, preserving application state and improving development experience.
+
+Q. List down your favourite 5 superpowers of Parcel and describe any 3 of them.
+A. 1. Hot Reloading
+        - As you make changes to your code, Parcel automatically rebuilds the changed files and updates your app in the browser. By default, Parcel fully reloads the page, but in some 
+          cases it may perform Hot Module Replacement (HMR). HMR improves the development experience by updating modules in the browser at runtime without needing a whole page refresh. 
+          This means that application state can be retained as you change small things in your code.
+
+        - HMR works by replacing the code for a module, and then re-evaluating it and along with all of its parents.
+   2. Diagnostics
+        - If you make an error in your code or configuration, Parcel displays beautiful diagnostics in your terminal and in the browser.
+   3. Tree Shaking
+        - It statically analyzes the imports and exports of each module, and removes everything that isn't used.
+        - In production builds, Parcel concatenates modules into a single scope when possible, rather than wrapping each module in a separate function. This is called “scope hoisting”.
+          Parcel’s implementation of scope hoisting works by analyzing each module independently and in parallel, and at the end concatenating them together. In order to make 
+          concatenation into a single scope safe, the top-level variables of each module are renamed to ensure they are unique. In addition, imported variables are renamed to match the 
+          exported variable names from the resolved module. Finally, any unused exports are removed.
+          eg before tree shaking
+          (a) index.js
+                import {add} from './math';
+
+                console.log(add(2, 3));
+
+          (b) math.js
+                export function add(a, b) {
+                return a + b;
+                }
+
+                export function square(a) {
+                return a * a;
+                }
+          After Tree Shaking - the files will be combined in single module and variables names would be changed
+                function $fa6943ce8a6b29$add(a, b) {
+                return a + b;
+                }
+
+                console.log($fa6943ce8a6b29$add(2, 3));
+
+   4. Minification
+        - Minification reduces the file size of your output bundles by removing whitespace, renaming variables to shorter names,
+   5. Content Hashing
+   6. Caching
+        - Parcel caches everything it builds to disk. If you restart the dev server, Parcel will only rebuild files that have changed since the last time it ran. Parcel automatically 
+        tracks all of the files, configuration, plugins, and dev dependencies that are involved in your build, and granularly invalidates the cache when something changes. For example,
+        if you change a configuration file, all of the source files that rely on that configuration will be rebuilt.
+
+        - Parcel caches everything it builds to disk. If you restart the dev server, Parcel will only rebuild files that have changed since the last time it ran. Parcel automatically 
+        tracks all of the files, configuration, plugins, and dev dependencies that are involved in your build, and granularly invalidates the cache when something changes. For example, 
+        you change a configuration file, all of the source files that rely on that configuration will be rebuilt.
+   7. Dev server
+        - Parcel includes a development server which is run on https://localhost:1234
+   8. Differential Bundling
+
+Q. What is `.gitignore`? What should we add and not add into it?
+A. .gitignore specifies files and directories that Git should not track or commit. We should add all the files in .gitignore that could be regenerated
+   by other files like .parcel-cahce, dist, node_modules
+
+Q. What is the difference between `package.json` and `package-lock.json`
+A. (a) package.json 
+   - maintains approximate version of the installed dependencies through ^/~ . 
+   - maintains the installed devDependencies and dependencies. 
+   - contains metadata and scripts
+
+   (b) package-lock.json
+   - maintains the exact version of installed dependencies
+   - maintains the version of installed transitive dependencies
+
+Q. Why should I not modify `package-lock.json`?
+A. package-lock.json ensures consistent dependency versions across environments. Manual modification can lead to inconsistent installs and dependency resolution issues.
+
+Q. What is `node_modules` ? Is it a good idea to push that on git?
+A. node_modules folder is generated when we run 'npm install' because it contains the code of all the installed packages/dependencies. One should not push it to git because it consumes
+   a lot of space, also it can be regenerated through package.json and package-lock.json(reproducible pieces are not advised to push into git). It contains both direct and transitive 
+   dependencies.
+
+Q. What is the `dist` folder?
+A. dist contains the production build artifacts generated by the bundler. These files are optimized, bundled, minified, and ready for deployment.
+
+Q. What is `browserlists`
+A. It defines on which browsers and their versions, our web page will be compatible with!
+
+Q. Read about: ^ - caret and ~ - tilda
+A. caret symbol allows minor and patch updates within the same major version whereas tilda allows patch updates.
+
+Q. Read about Script types in html (MDN Docs)
+A. type = module
+
+Q. Read about dif bundlers: vite, webpack, parcel
+A. 
+
+Q. What is transpilation?
+A. Transpilation (short for "source-to-source compilation") is the process of converting human-readable source code from one high-level programming language into another high-level 
+   language. Unlike traditional compiling, which turns code into machine-readable binary (0s and 1s), transpiling keeps the code in a human-readable, high-level format.
+
+                This is used for CROSS ENVIRONMENT COMPATIBILTY: Developers write modern code (like ES6+ JavaScript, TypeScript, or JSX), but browsers cannot read these newer syntaxes 
+    natively. Transpiling converts this modern code into older, widely supported JavaScript (like ES5).
+
