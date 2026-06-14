@@ -137,9 +137,6 @@ A. It defines on which browsers and their versions, our web page will be compati
 Q. Read about: ^ - caret and ~ - tilda
 A. caret symbol allows minor and patch updates within the same major version whereas tilda allows patch updates.
 
-Q. Read about Script types in html (MDN Docs)
-A. type = module
-
 Q. Read about dif bundlers: vite, webpack, parcel
 A. 
 
@@ -149,4 +146,28 @@ A. Transpilation (short for "source-to-source compilation") is the process of co
 
                 This is used for CROSS ENVIRONMENT COMPATIBILTY: Developers write modern code (like ES6+ JavaScript, TypeScript, or JSX), but browsers cannot read these newer syntaxes 
     natively. Transpiling converts this modern code into older, widely supported JavaScript (like ES5).
+
+
+
+*************************************************************** EPISODE 3 *****************************************************
+
+Q. What is 'type' in script tag?
+A. The type attribute gives the language of the script or format of the data. Permissible values for type attribute are:
+        1. text/javascript or omitted
+        - Interpreted as classic Javascript script.
+        - You do not need to include type="text/javascript" in modern HTML5. The browser defaults to JavaScript automatically.
+
+        2. module
+        - Instructs the browser to treat the code as an ES (ECMAScript)
+        - automaticcaly loads as defer attribute.
+        - allows to have imports/exports at top of script.
+        
+        3. importmap
+
+        4. speculationrules
+
+        5. text/template or application/json
+        - If the browser does not recognize the value as a scripting language, it completely ignores the script and will not execute it. This is highly useful for 
+        embedding data directly inside HTML that your application's JavaScript can read later using the DOM
+
 
