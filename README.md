@@ -19,3 +19,9 @@ Episode 2
 - what is significance of dist folder.
 - what is type="module" in <script> tag
 - what is node_modules and why it is added to .gitignore
+
+
+Episode 3
+- script in package.json
+- what is JSX
+- What is functional component
