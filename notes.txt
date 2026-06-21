@@ -171,3 +171,4 @@ A. The type attribute gives the language of the script or format of the data. Pe
         embedding data directly inside HTML that your application's JavaScript can read later using the DOM
 
 
+*************************************************************** EPISODE 4 *****************************************************
