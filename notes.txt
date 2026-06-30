@@ -12,6 +12,11 @@ application code which leads to faster development and fewer vulnerabilities to 
 library functions. When using a framework, the control is reversed, which means that the framework tells the developer where code needs to be provided and calls it as 
 it requires.
 
+Q. What is React?
+A. React is split into two main parts that you must load into your project:
+1. React Core: This handles the logic of creating components, managing state, and building the "Virtual DOM."
+2. ReactDOM: This is the glue that takes that Virtual DOM and actually renders it into the real browser DOM.
+
 Q. Why is React known as React?
 A. React is a JavaScript Library. The name ‘React’ was chosen because the library was designed to allow developers to react to changes in state and data within an 
 application, and to update the user interface in a declarative and efficient manner.
@@ -172,3 +177,104 @@ A. The type attribute gives the language of the script or format of the data. Pe
 
 
 *************************************************************** EPISODE 4 *****************************************************
+Q. What is ECMAScript?
+A. ECMAScript is language specification and JS is its implementation. A specification is a formal, written document that defines the rules, syntax, and behavior of a programming language. It doesn't contain any code that a computer can run; it is purely a guide for humans.
+	- It answers questions like:
+		1. What keywords are allowed? (e.g., if, for, function)
+		2. What should happen when you add a number to a string?
+		3. How should the language handle errors?
+
+Q. Is JSX mandatory for React?
+A. No! One can build components using React.createElement too. React.createELement is pure JS. Each JSX element is just syntactic sugar for calling React.createElement(component, props, ...children)
+
+Q. Is ES6 mandatory for React?
+A. No. If one doesn’t use ES6 yet, one may use the create-react-class.
+
+Q. {TitleComponent} vs {<TitleComponent/>} vs {<TitleComponent></TitleComponent>} in JSX
+A.  1.{TitleComponent} (The Reference)
+	- This passes the actual JavaScript function itself as an expression. It does not execute or render the component.
+	- One can only use it when passing a component as a prop to another component (e.g., <Route component={TitleComponent} />
+	
+	2. {<TitleComponent />}
+	- This executes the component and creates a React element. It is the standard way to render a component that has no children.
+	- Syntactic sugar for React.createElement(TitleComponent, null)
+	- It calls the TitleComponent function, executes its logic, and renders whatever JSX is inside it.
+	
+	3. {<TitleComponent></TitleComponent>}
+	- This behaves exactly identical to {<TitleComponent />} under the hood, but it allows you to pass nested content (children) inside it.
+	- Syntactic sugar for React.createElement(TitleComponent, null, ...children)
+	- written in this way when one plan to put something between the tags, which will be passed to TitleComponent as props.children.
+		Example: {<TitleComponent>Click Me</TitleComponent>}
+
+
+Q. What is Virtual DOM? What is Reconciliation in React?
+A. The Real DOM (Document Object Model) is the browser's internal tree representation of your webpage. Updating the Real DOM is slow because every time a HTML element changes, the browser has to recalculate the CSS, layout the page, and repaint the screen.
+   The Virtual DOM is a lightweight, conceptual copy of the Real DOM kept in the computer's memory.
+   It is made up of plain JavaScript objects.
+   Because it's just regular JavaScript and doesn't touch the screen, creating or changing nodes in the VDOM is incredibly fast.
+   
+   Reconciliation is the process or "syncing algorithm" React uses to update the browser. Instead of rendering everything from scratch when something changes, React uses a highly optimized strategy to update only what is absolutely necessary.
+   Here is the step-by-step process of how it works:
+   1. The Render Phase: When a component's state or props change, React creates a brand-new Virtual DOM tree representing how the UI should look.
+   2. The Diffing Phase: React takes this new VDOM tree and compares it with the old VDOM tree (the one created right before the update). React uses a "diffing algorithm" to figure out exactly what changed.
+   3. The Commit Phase: Once React knows the exact differences (e.g., “Only the text inside the <h1> changed, and a new <li> was added”), it surgically updates only those specific parts in the Real DOM.
+   
+   The Two Golden Rules of the Diffing Algorithm:
+   Comparing two trees normally takes O(n^3) mathematical operations, which would be way too slow for a web browser. React cuts this down to O(n) by making two assumptions during reconciliation:
+    - Different Element Types = Brand New Trees: If an element changes from a <div> to a <span>, React won't bother comparing their children. It will completely tear down the old tree and build the new one from scratch.
+	- The Power of Keys: When rendering lists, React uses the key prop to keep track of elements across renders. If you reorder a list, React uses the keys to shuffle the existing Real DOM elements around rather than destroying and recreating them.
+
+Q. Why we need keys in React? When do we need keys in React?
+A. By default, when recursing on the children of a DOM node, React just iterates over both lists of children at the same time and generates a mutation whenever there’s a difference.
+   For example, when adding an element at the end of the children, converting between these two trees works well:
+    <ul>
+	  <li>first</li>
+	  <li>second</li>
+	</ul>
+
+	<ul>
+	  <li>first</li>
+	  <li>second</li>
+	  <li>third</li>
+	</ul>
+	React will match the two <li>first</li> trees, match the two <li>second</li> trees, and then insert the <li>third</li> tree.
+	
+	If you implement it naively, inserting an element at the beginning has worse performance. For example, converting between these two trees works poorly:
+	<ul>
+	  <li>Duke</li>
+	  <li>Villanova</li>
+	</ul>
+
+	<ul>
+	  <li>Connecticut</li>
+	  <li>Duke</li>
+	  <li>Villanova</li>
+	</ul>
+	React will mutate every child instead of realizing it can keep the <li>Duke</li> and <li>Villanova</li> subtrees intact. This inefficiency can be a problem.
+	
+	In order to solve this issue, React supports a key attribute. When children have keys, React uses the key to match children in the original tree with children in the subsequent tree
+	<ul>
+	  <li key="2015">Duke</li>
+	  <li key="2016">Villanova</li>
+	</ul>
+
+	<ul>
+	  <li key="2014">Connecticut</li>
+	  <li key="2015">Duke</li>
+	  <li key="2016">Villanova</li>
+	</ul>
+    Now React knows that the element with key '2014' is the new one, and the elements with the keys '2015' and '2016' have just moved
+
+Q. Can we use index as keys in React?
+A. Yes but is not recommended. item’s index in the array as a key can work well if the items are never reordered, but reorders will be slow.
+   Reorders can also cause issues with component state when indexes are used as keys. Component instances are updated and reused based on their key. If the key is an index, moving an item changes it. As a result, component state for things like uncontrolled inputs can get mixed up and updated in unexpected ways.
+   a key is the only thing React uses to identify DOM elements. What happens if you push an item to the list or remove something in the middle? If the key is same as before React assumes that the DOM element represents the same component as before. But that is no longer true.
+   e.g. https://jsbin.com/wohima/edit?output -> try this!
+   
+Q. What is <React.Fragment></React.Fragment> and <></> ?
+A. 
+
+Q. What is React Fiber?
+A. 
+
+*************************************************************** EPISODE 5 *****************************************************
