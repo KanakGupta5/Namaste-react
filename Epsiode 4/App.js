@@ -1,6 +1,5 @@
 import react from 'react';
 import ReactDOM from 'react-dom/client';
-import foodlogo from './images/foodlogo.png';
 
 // Header
 //     - logo 
