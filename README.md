@@ -34,4 +34,8 @@ Episode 4
 - what is config driven UI
 
 Episode 5
-- 
+- how to export/import(named and default)
+- folder structure followed in industry
+- react hooks(useState)
+
+Episode 6

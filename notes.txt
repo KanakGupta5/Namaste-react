@@ -213,7 +213,7 @@ A. The Real DOM (Document Object Model) is the browser's internal tree represent
    It is made up of plain JavaScript objects.
    Because it's just regular JavaScript and doesn't touch the screen, creating or changing nodes in the VDOM is incredibly fast.
    
-   Reconciliation is the process or "syncing algorithm" React uses to update the browser. Instead of rendering everything from scratch when something changes, React uses a highly optimized strategy to update only what is absolutely necessary.
+   Reconciliation is the process or "syncing algorithm" React uses to update the browser OR The algorithm React uses to diff one tree with another to determine which parts need to be changed. Instead of rendering everything from scratch when something changes, React uses a highly optimized strategy to update only what is absolutely necessary.
    Here is the step-by-step process of how it works:
    1. The Render Phase: When a component's state or props change, React creates a brand-new Virtual DOM tree representing how the UI should look.
    2. The Diffing Phase: React takes this new VDOM tree and compares it with the old VDOM tree (the one created right before the update). React uses a "diffing algorithm" to figure out exactly what changed.
@@ -223,6 +223,11 @@ A. The Real DOM (Document Object Model) is the browser's internal tree represent
    Comparing two trees normally takes O(n^3) mathematical operations, which would be way too slow for a web browser. React cuts this down to O(n) by making two assumptions during reconciliation:
     - Different Element Types = Brand New Trees: If an element changes from a <div> to a <span>, React won't bother comparing their children. It will completely tear down the old tree and build the new one from scratch.
 	- The Power of Keys: When rendering lists, React uses the key prop to keep track of elements across renders. If you reorder a list, React uses the keys to shuffle the existing Real DOM elements around rather than destroying and recreating them.
+
+  ALTER defination of Reconciliation:
+  Reconciliation is the algorithm behind what is popularly understood as the "virtual DOM." A high-level description goes something like this: when you render a React application, a tree of nodes that 
+  describes the app is generated and saved in memory. This tree is then flushed to the rendering environment — for example, in the case of a browser application, it's translated to a set of DOM operations. 
+  When the app is updated (usually via setState), a new tree is generated. The new tree is diffed with the previous tree to compute which operations are needed to update the rendered app.
 
 Q. Why we need keys in React? When do we need keys in React?
 A. By default, when recursing on the children of a DOM node, React just iterates over both lists of children at the same time and generates a mutation whenever there’s a difference.
@@ -275,6 +280,65 @@ Q. What is <React.Fragment></React.Fragment> and <></> ?
 A. 
 
 Q. What is React Fiber?
-A. 
+A. - Its headline feature is incremental rendering: the ability to split rendering work into chunks and spread it out over multiple frames. Other key features include the ability to pause, abort, or reuse work
+     as new updates come in; the ability to assign priority to different types of updates;
+   - Primary goal of Fiber is to enable React to take advantage of scheduling. Specifically, we need to be able to
+      - pause work and come back to it later.
+      - assign priority to different types of work.
+      - reuse previously completed work.
+      - abort work if it's no longer needed.
+
+   Render vs rendering
+   The reconciler does the work of computing which parts of a tree have changed; the renderer then uses that information to actually update the rendered app.This separation means that React DOM and React 
+   Native can use their own renderers while sharing the same reconciler, provided by React core.Fiber reimplements the reconciler.
+
+   Scheduling in Fiber:
+   - the process of determining when work(any computations that must be performed) should be performed.
+   - In its current implementation React walks the tree recursively and calls render functions of the whole updated tree during a single tick. However in the future it might start delaying some updates to avoid dropping frames.
+   - This is a common theme in React design. Some popular libraries implement the "push" approach where computations are performed when the new data is available. React, however, sticks to the "pull" approach where computations can be delayed until necessary.
+   - React is not a generic data processing library. It is a library for building user interfaces. We think that it is uniquely positioned in an app to know which computations are relevant right now and which are not.
+   - If something is offscreen, we can delay any logic related to it. If data is arriving faster than the frame rate, we can coalesce and batch updates. We can prioritize work coming from user interactions 
+     (such as an animation caused by a button click) over less important background work (such as rendering new content just loaded from the network) to avoid dropping frames.
+   - React doesn't currently take advantage of scheduling in a significant way; an update results in the entire subtree being re-rendered immediately. Overhauling React's core algorithm to take advantage of scheduling is the driving idea behind Fiber
+   
 
 *************************************************************** EPISODE 5 *****************************************************
+Q. What is the difference between Named Export, Default export ?
+A.  1. Named import/export
+		- this is used when we want to export multiple functions/statements present in a single file
+		- syntax: export const logo_url = ".......";
+				  export function Header = () => {
+													console.log("Demo function");
+											}
+											
+				  import {logo_url, Header} from "......";
+				  
+				  import * as utils from "......";
+				  console.log(utils.Header};
+				  console.log(utils.logo_url);
+				  
+	2. Default export
+		- this is used when we want to export a single function/component/statement from a file
+		- syntax: function Header = () => {
+											console.log("demo function");
+										  } 
+				  export default Header;
+				  
+				  import Header from ".....";
+
+
+
+Q. What is the importance of config.js file?
+A. A config.js file's primary purpose is to keep variable, environment-specific, or global data separate from your actual application logic.Instead of scattering hard-coded values across dozens of different code files, you put them all in 
+   config.js and import them wherever they are needed.
+
+Q. What are React Hooks?
+A. Hooks are special functions in React that let you use state variable. Rules imposed on hooks are:
+		- Only call Hooks at the top level. Don’t call Hooks inside loops, conditions, or nested functions.
+		- Only call Hooks from React function components. Don’t call Hooks from regular JavaScript functions. 
+
+Q. Why do we need a useState Hook?
+A. - useState is a Hook. We call it inside a function component to add some local state to it.React will preserve this state between re-renders. 
+   - useState returns a pair: the current state value and a function that lets you update it. The only argument to useState is the initial state
+
+*************************************************************** EPISODE 6 *****************************************************
