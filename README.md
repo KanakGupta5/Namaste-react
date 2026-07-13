@@ -39,3 +39,8 @@ Episode 5
 - react hooks(useState)
 
 Episode 6
+- monolith vs microservice architecture
+- useEffect
+- shimmer UI
+
+Episode 7

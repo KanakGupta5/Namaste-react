@@ -341,4 +341,75 @@ Q. Why do we need a useState Hook?
 A. - useState is a Hook. We call it inside a function component to add some local state to it.React will preserve this state between re-renders. 
    - useState returns a pair: the current state value and a function that lets you update it. The only argument to useState is the initial state
 
+
 *************************************************************** EPISODE 6 *****************************************************
+
+Q. Why do we need a useEffect Hook?
+A. useEffect is a React Hook that lets you perform side effects in function components. Side effects can include:
+      1. Fetching data from an API
+      2. Subscribing to a service
+      3. Manually updating the DOM
+      4. Setting up timers or intervals
+
+   The useEffect hook takes two arguments:
+      - A function (your side effect).
+      - An optional dependency array.
+
+   Dependency Array:
+   1. Run on Every Render (No Dependency Array):
+         useEffect(() => {
+         console.log('Runs after every render');
+         });
+   2. Run Only Once (Empty Dependency Array):
+         useEffect(() => {
+         console.log('Runs only once (like componentDidMount)');
+         }, []);
+   3. Run When State/Props Change:
+         useEffect(() => {
+         console.log('Runs when count changes');
+         }, [count]);
+
+   Cleaning Up Effects: Sometimes, side effects need cleanup — like removing event listeners or canceling API calls. useEffect lets you return a cleanup function to handle this.
+         useEffect(() => {
+         const timer = setInterval(() => {
+            console.log('Interval running');
+         }, 1000);
+         return () => {
+            clearInterval(timer);  // Cleanup on unmount
+            console.log('Interval cleared');
+         };
+         }, []);
+
+Q. What is the difference between JS expression and JS statement
+A. Expression:
+      An expression is any valid unit of code that resolves to a single value. Wherever JavaScript expects a value, you can put an expression
+      eg: 
+         Basic Values: 5, "Hello World", true
+         Arithmetic Operations: 2 + 3 (resolves to 5)
+         Variable References: myVariable (resolves to whatever is stored inside)
+         Function Calls: calculateTotal() (resolves to the returned value)
+         Ternary Operators: isLoggedIn ? 'Welcome' : 'Login'
+
+   Statement: 
+      A statement is an instruction to the JavaScript engine to perform a task. 
+      eg:
+         Variable Declarations: let x = 10;
+         Conditional Structures: if (x > 5) { ... }
+         Loops: for (let i = 0; i < 10; i++) { ... } or while (condition) { ... }
+         Return/Jump Commands: return; or break;
+
+Q. What is Conditional Rendering, explain with a code example
+A. To display different things depending on different conditions. One can conditionally render JSX using JavaScript syntax like if statements, &&, and ? : operators
+
+Q. What is CORS?
+A. stands for cross origin resource sharing which is implemented by browser that extends the Same-Origin Policy. It restricts to access the data when requested by a 
+   different origin(https/http + host + port) combination. 
+   By default browsers block the requests from different origin. Using CORS, servers can mention which cross origins can access the data by using Access-Control-Allow-Origin
+   in their response headers. The browser checks these headers before allowing the client-side JavaScript to access the response.
+
+   FYI: CORS does not stop the request from reaching the server. It stops JavaScript from reading the response. So when a client makes a request, it is sent to server
+   and server does all its job and then sends the response headers. THe browser then matches the Access-Control-Allow-Origin header present in response headers and allow
+   to access the data(or denies the request).
+
+
+*************************************************************** EPISODE 7 *****************************************************
