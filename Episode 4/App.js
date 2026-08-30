@@ -1593,7 +1593,6 @@ const RestaurantList = [
 
 //Dynamic Restaurant Card(with props, using map) https://media-assets.swiggy.com/swiggy/image/upload/fl_lossy,f_auto,q_auto,w_660/
 const RestaurantCard = (restaurant) => {
-    {console.log(restaurant)}
     const {name, cloudinaryImageId, costForTwo, cuisines, avgRatingString, sla } = restaurant?.data?.info;
     return <>
         <div className='restaurant-card'>

@@ -413,3 +413,82 @@ A. stands for cross origin resource sharing which is implemented by browser that
 
 
 *************************************************************** EPISODE 7 *****************************************************
+
+Q. What are various ways to add images into App? Explain with code examples
+A.  1. Importing images using ES6 Modules
+
+		import React from 'react';
+		import myImage from './my_image.jpg';
+		function App() {
+		 return (
+		 <div>
+		 <img src={myImage} alt="My Image" />
+		 </div>
+		 );
+		}
+		export default App;
+		
+	2. Using public folder
+			This method is useful for handling large image assets or for dynamic image URLs. Place your image in the public directory. Then, reference it in your code:
+	
+		// public/my_image.jpg       ------>   place in folder
+		
+		import React from 'react';
+			function App() {
+			 return (
+			 <div>
+			 <img src={process.env.PUBLIC_URL + '/my_image.jp
+			g'} alt="My Image" />
+			 </div>
+			 );
+			}
+		export default App;
+	
+	3. Loading images from a remote source
+		We can load images from a remote source, such as an external URL or a backend API, by specifying the image URL directly in img tag.
+	
+		import React from 'react';
+			function App() {
+			 const imageUrl = 'https://example.com/my_image.jpg';
+			 return (
+			 <div>
+			 <img src={imageUrl} alt="My Image" />
+			 </div>
+			 );
+		}
+		export default App;
+		
+	4. Using image assets within CSS
+		We can also use images as background images or in other CSS styling
+		
+		image-container {
+			 background-image: url('/my_image.jpg');
+			 width: 300px;
+			 height: 200px;
+		}
+		
+		Then, apply the CSS class to your JSX:
+		
+		import React from 'react';
+		import './styles.css';
+		function App() {
+			 return (
+			 <div className="image-container">
+			 {/* Content goes here */}
+			 </div>
+			 );
+		}
+		export default App;
+
+Q. What would happen if we do console.log(useState())?
+A. It depends on where you call it.
+   If you call it outside of a React component, it will throw a runtime error because hooks can only be called inside functional components.
+   If you call it inside a component, it returns an array: [undefined, dispatchAction]. The first element is undefined because no initial state was passed to the hook, and the second element is the state updater function.
+   The synatx we commonly use with useState() as const [value, setValue] = useState(0) is the array destructuring syntax.
+
+Q. What is SPA?
+A. An SPA, or Single Page Application, is a web application that loads a single HTML page and dynamically updates that page as the user interacts with it.
+   Instead of the browser requesting a brand-new HTML page from the server on every navigation, client-side routing intercepts the URL change and swaps out JavaScript components instantly  and avoids full page refresh.
+   The trade-offs are a slower initial load time—because the browser has to download a larger JavaScript bundle upfront.
+
+*************************************************************** EPISODE 8 *****************************************************

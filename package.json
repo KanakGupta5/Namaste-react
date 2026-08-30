@@ -15,14 +15,16 @@
   "type": "commonjs",
   "scripts": {
     "test": "jest",
-    "start:local": "parcel index.html", 
-    "start:prod": "parcel build index.html" 
+    "start:local": "parcel index.html",
+    "start:prod": "parcel build index.html"
   },
   "devDependencies": {
     "parcel": "^2.16.4"
   },
   "dependencies": {
+    "formik": "^2.4.9",
     "react": "^19.2.7",
-    "react-dom": "^19.2.7"
+    "react-dom": "^19.2.7",
+    "react-router-dom": "^6.30.1"
   }
 }

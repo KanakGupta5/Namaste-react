@@ -44,3 +44,11 @@ Episode 6
 - shimmer UI
 
 Episode 7
+- react router dom(createBrowserRoute, RouterProvider, useRouteError, Link)
+- childer routing
+- single page application
+- client side routing vs server side routing
+- dynamic routing
+- formik for forms
+
+Episode 8
