@@ -492,3 +492,51 @@ A. An SPA, or Single Page Application, is a web application that loads a single 
    The trade-offs are a slower initial load time—because the browser has to download a larger JavaScript bundle upfront.
 
 *************************************************************** EPISODE 8 *****************************************************
+
+Q. Lifecycle methods
+A. Constructor - we recieve props here, state variables are also defined here.
+   Render - returns JSX
+   ComponentDidMount - for one time initializations and making API calls
+   ComponentDidUpdate - to call something that needs to be invoked when any state variable is changed
+   COmponentWillUnmount - cleanup (i.e. cleaning setInterval)
+
+Q. Why we use super(props) in constructor of class based components?
+A. This is because super(props) is used to invoke the constructor of the parent class, ensuring that the parent class's initialization is performed before the child class's constructor
+   code is executed. It is essential to maintain the inheritance chain correctly.
+   By calling super(props), we also make the props available for the parent class's constructor to work with.
+
+Q. Why can't we have the callback function of useEffect async?
+A.  useEffect itself cannot directly accept an async callback function. This is because useEffect expects its callback function to return either nothing (i.e., undefined) or a cleanup
+   function. An async function returns a Promise, and it doesn't fit well with this expected behavior.
+   With async functions, we might not have fine-grained control over the execution order of the asynchronous code and the cleanup code.
+   React relies on the returned cleanup function to handle cleanup when the component is unmounted or when the dependencies specified in the useEffect dependency array change. If you return a Promise, React doesn't know when or
+   how to handle cleanup.
+   One can use async in below way:
+   
+   useEffect(() => {
+      const fetchData = async () => {
+         try {
+            // Perform asynchronous operations
+            const result = await someAsyncOperation();
+            // Update the state with the result
+            setState(result);
+         } catch (error) {
+            // Handle errors
+            console.error(error);
+         }
+      };
+
+      fetchData(); // Call the async function
+      return () => {
+         // Cleanup code, if necessary
+         // This function will be called when the component unmounts or when dependencies change
+      };
+   }, [/* dependency array */]);
+
+Q. How do you create Nested Routes react-router-dom cofiguration
+A. 
+
+Q. Read abt createHashRouter, createMemoryRouter from React Router docs.
+A.
+
+*************************************************************** EPISODE 9 *****************************************************

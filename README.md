@@ -52,3 +52,12 @@ Episode 7
 - formik for forms
 
 Episode 8
+- Class based component
+    - what is class based component
+    - how to create state variables and update them
+    - lifecyle
+
+Episode 9
+    - Single responsibilty principle
+    - Custom hooks
+    
