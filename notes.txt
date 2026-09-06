@@ -565,3 +565,13 @@ A. We use lazy for:
    we need to use lazy() when we want to optimize the performance and user experience of our React application by reducing the initial bundle size and deferring the loading of components until they are needed.
 
 *************************************************************** EPISODE 10 *****************************************************
+Q. Why do we have .postcssrc file?
+A. 
+
+Q. In tailwind.config.js , what does all the keys mean (content, theme, extend, plugins)?
+A. 
+
+Q. Advantages of tailwind css.
+A. 
+
+
