@@ -60,4 +60,10 @@ Episode 8
 Episode 9
     - Single responsibilty principle
     - Custom hooks
+    - Lazy loading (also known as Chunking/Code splitting/Dynamic Bundling/ On demand routing/dynamic import)
+    - How simulate offline/slow network in dev tools
+
+Episode 10
+    - Tailwind CSS
+        - installation
     

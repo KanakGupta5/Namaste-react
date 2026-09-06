@@ -540,3 +540,28 @@ Q. Read abt createHashRouter, createMemoryRouter from React Router docs.
 A.
 
 *************************************************************** EPISODE 9 *****************************************************
+
+Q. Advantages and disadvantages of using this code splitting pattern?
+A. Advantages:
+   - Faster Initial Load Time
+   - Improved Performance
+   - Optimized Resource Usage 
+   - Enhanced Caching: Smaller bundles can benefit from browser caching. Since they are less likely to change frequently, browsers can cache them, resulting in faster subsequent visits for returning users
+   - Simpler Maintenance 
+   - Better Mobile Performance
+
+   Disadvantages
+   - Complex Configuration : Setting up code splitting and configuring it correctly can be complex, especially in large applications
+   - Initial Loading Delay : though it can be compensated with <Suspense>
+   - Testing Complexity
+
+Q. When and why do we need lazy() ?
+A. We use lazy for: 
+   - Code Splitting and Reducing Initial Bundle Size
+   - Improved Performance
+   - Faster Initial Load
+   - Better User Experience
+   - Optimizing Mobile Performance
+   we need to use lazy() when we want to optimize the performance and user experience of our React application by reducing the initial bundle size and deferring the loading of components until they are needed.
+
+*************************************************************** EPISODE 10 *****************************************************
