@@ -68,4 +68,16 @@ Episode 10
     - installation
 
 Epsiode 11
+- Higher Order Component(HOC)
+    - Pure function
+- React Dev Tools(Chrome Extension)
+- Controlled/Uncontrolled component
+    - Lifting up the state
+- Prop drilling
+- React Context (State Management)
+    - how to create context
+        - createContext({}) -> in functional components
+        - UserContext.Consumer -> in class based components
+    - Context.Provider
+
     

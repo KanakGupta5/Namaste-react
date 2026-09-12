@@ -672,3 +672,14 @@ Q. What is styled components?
 A. 
 
 *************************************************************** EPISODE 11 *****************************************************
+Q. What are Context Provider and Context Consumer?
+A. Context Provider : 
+   The Context Provider is a component that allows its children to subscribe to a context's changes . It accepts a value prop, which is the data that will be shared with the components that are descendants of this provider. 
+   The Provider component is created using  React.createContext()  and then rendered as part of the component tree. It establishes the context and provides the data to its descendants.
+
+   Context Consumer : 
+   The Context Consumer is a component that subscribes to the changes in the context provided by its nearest Context Provider ancestor. It allows components to access the context data without the need for prop drilling. 
+   It takes a function as its child, and that function receives the current context value as an argument
+
+
+************************************** PENDING IN 10, 8, 4, 2  ************************************** 

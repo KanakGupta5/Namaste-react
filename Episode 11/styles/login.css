@@ -1,0 +1,39 @@
+.container {
+    background-color: antiquewhite;
+    min-height: 80vh;
+    font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    display: flex;
+    align-items: center;
+}
+
+.form-container {
+    min-width: 23%;
+    background-color: #ffffff;
+    margin: auto;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    padding: 3rem 3rem;
+    min-height: 30vh;
+    border-radius: 0.4rem;
+}
+
+.form-field {
+    display: flex;
+    flex-direction: column;
+}
+
+.btn {
+    text-align: center;
+}
+
+.submit-btn {
+    border-radius: 0.3rem;
+    padding: 0.5rem 1rem;
+    background-color: cadetblue;
+    color: white;
+}
+
+.input-field {
+    padding: 0.3rem;
+}
