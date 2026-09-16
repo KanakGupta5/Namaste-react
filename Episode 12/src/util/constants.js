@@ -1,0 +1,4 @@
+export const APP_LOGO_URL = "https://placeit-img-1-p.cdn.aws.placeit.net/uploads/stage/stage_image/68044/optimized_product_thumb_stage.jpg";
+export const IMG_CDN_URL = "https://media-assets.swiggy.com/swiggy/image/upload/fl_lossy,f_auto,q_auto,w_660/";
+export const GET_RASTAURANT_LIST = "https://corsproxy.io/?https://www.swiggy.com/dapi/restaurants/list/v5?lat=12.996222&lng=77.6768763&is-seo-homepage-enabled=true&page_type=DESKTOP_WEB_LISTING";
+export const GET_RESTAURANT_MENU_BY_RESTAURANT_ID = "https://corsproxy.io/?https://www.swiggy.com/dapi/menu/pl?page-type=REGULAR_MENU&complete-menu=true&lat=12.996222&lng=77.6768763&restaurantId=568896"

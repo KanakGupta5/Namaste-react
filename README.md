@@ -80,4 +80,20 @@ Epsiode 11
         - UserContext.Consumer -> in class based components
     - Context.Provider
 
+Epsiode 12 - using context
+- implemented cart page through context
+
+Epsiode 12
+- Redux
+    - libraries: react-redux and redux toolkit
+    - configureStore
+    - Provider
+    - createSlice
+    - useSelector
+    - useDispatch
+- Immer
+
+Epsiode 13
+
+
     

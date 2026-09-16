@@ -681,5 +681,100 @@ A. Context Provider :
    The Context Consumer is a component that subscribes to the changes in the context provided by its nearest Context Provider ancestor. It allows components to access the context data without the need for prop drilling. 
    It takes a function as its child, and that function receives the current context value as an argument
 
+*************************************************************** EPISODE 12 *****************************************************
+
+Q. useContext vs Redux.
+A. useContext  and  Redux  are both tools used for state management in React applications.
+   useContext
+      - Scope
+         - useContext is part of the React core and is used for managing state within the component tree. It provides a way to access the value of a context.
+         - It's typically used for smaller-scale state management needs within a component or a small section of the application
+      - Complexity
+         - useContext is simpler and more lightweight compared to Redux. 
+         - It's a part of the React library and doesn't introduce additional concepts or boilerplate code
+      - Component Coupling
+         - State managed with useContext is local to the component or a subtree of components where the context is provided
+
+   Redux
+      - Scope
+         - Redux is a state management library that provides a global state container for the entire application
+      - Complexity
+         - Redux introduces a set of concepts, such as actions, reducers, and a store. This can make it more complex compared to using useContext for local state management
+      - Component Coupling
+         - State managed with Redux is global, which means any component can connect to and access the state. 
+         - This can be advantageous for sharing state across different parts of the application
+         - Redux needs to be integrated separately into a React application. 
+         - You need to create actions, reducers, and a store. Components interact with the global state using the connect function or hooks like useSelector and useDispatch
+
+Q. Advantage of using Redux Toolkit over Redux(Vanilla Redux).
+A. Vanilla Redux is older way of writing redux.
+   Advantages
+      - Less Boilerplate Code:
+         - Redux Toolkit  is a set of utility functions and abstractions that simplifies and streamlines the process of working with Redux
+      - Easier Async Operations
+         - If our app deals with things like fetching data from a server, Redux Toolkit makes it simpler. 
+         - It has a tool called createAsyncThunk that handles async actions in a way that's easy to understand and use.
+      - Simpler Store Setup
+         - Setting up your Redux store is easier. It has a function called configureStore that simplifies the process, and it comes with sensible defaults, so you don't have to configure everything from scratch
+      - Built-in DevTools Support : 
+         - If you use Redux DevTools for debugging, Redux Toolkit has built-in support
+      - Handles Immutability for You :
+         - Redux Toolkit uses a library called Immer to handle this behind the scenes
+
+
+Q. Explain Dispatcher.
+A. Dispatch Function : 
+      - The dispatch function is provided by the Redux store. 
+      - We use itto send actions to the store. 
+      - An action is a plain JavaScript object that describes what should change in the application's state. When an action is dispatched, the store passes the action through its reducer, which is a function that specifies how the state should change in response to the action
+      - Usage :
+         - When we want to update the state in our Redux store, we create an action and dispatch it using the dispatch function.
+
+Q. Explain Reducer.
+A. In Redux Toolkit, the  createSlice function is commonly used to create reducers 
+   - Creating a Slice : 
+      - Instead of creating a standalone reducer function, you use createSlice to define a "slice" of your Redux store. 
+      - A slice includes actions, a reducer, and the initial state.
+   - Automatically Generated Action Creators :  
+      - createSlice  automatically generates action creators for each reducer function
+   -  Immutability with immer : 
+      - Redux Toolkit uses the immer library internally to handle immutability. 
+      - This means you can write reducer logic that appears to directly modify the state, but immer ensures it produces a new state without mutating the original
+   -  Reducer Function : 
+      - The createSlice function returns an object that includes a reducer property. This reducer is a function that you can use in your store's configuration.
+   - Initial State :
+      - The initialState property in createSlice defines the initial state of your slice. This is the starting point for your state before any actions are dispatched.
+   - Reducer Logic : 
+      - The logic inside each reducer function specifies how the state should change in response to the associated action
+
+Q. Explain slice.
+   ALTER : Explain createSlice and the configuration it takes.
+A. A slice  is a collection of Redux-related code, including reducer logic and actions, that corresponds to a specific piece of the application state. Slices are created using the createSlice utility function provided by Redux Toolkit
+   - The createSlice function takes an options object with the following properties:
+      - name (string) : 
+         - A string that identifies the slice. This is used as the prefix for the generated action types
+      - initialState (any) : 
+         - The initial state value for the slice. This is the starting point for your state before any actions are dispatched
+      - reducers (object) : 
+         - An object where each key-value pair represents a reducer function. The keys are the names of the actions, and the values are the corresponding reducer logic
+   
+   - The createSlice function returns an object with the following properties:
+      - name (string) : 
+         - The name of the slice
+      - reducer (function) : 
+         - The reducer function generated based on the provided reducers. This is the function you use in your store configuration
+      - actions (object) : 
+         - An object containing the action creators for each defined reducer. These action creators can be directly used to dispatch actions.
+
+   - Once we've created a slice, you can use its reducer and actions in your Redux store configuration and in your React components
+      - Configuring the Store
+      - Dispatching Actions
+
+Q. Explain selector.
+A. - A selector  is a function that extracts specific pieces of data from the Redux store. It allows you to compute derived data from the store state and efficiently access specific parts of the state tree 
+   - we can use them in your React components using the useSelector hook from the react-redux library.
+   - This hook allows you to efficiently extract and subscribe to parts of the Redux store.
+
+*************************************************************** EPISODE 13 *****************************************************
 
 ************************************** PENDING IN 10, 8, 4, 2  ************************************** 
