@@ -1,22 +1,22 @@
 import ReactDOM from 'react-dom/client';
-import Header from './Episode 13/src/components/Header';
-import Body from './Episode 13/src/components/Body';
+import Header from './src/components/Header';
+import Body from './src/components/Body';
 import { createBrowserRouter, RouterProvider, Outlet } from 'react-router-dom';
-import Error from './Episode 13/src/components/Error';
-import About from './Episode 13/src/components/About';
-import ContactUs from './Episode 13/src/components/ContactUs';
-import RestaurantMenu from './Episode 13/src/components/RestaurantMenu';
+import Error from './src/components/Error';
+import About from './src/components/About';
+import ContactUs from './src/components/ContactUs';
+import RestaurantMenu from './src/components/RestaurantMenu';
 import { Suspense, lazy, useEffect, useState } from 'react';
-import UserContext from './Episode 13/src/util/UserContext';
+import UserContext from './src/util/UserContext';
 import { Provider } from 'react-redux';
-import appStore from './Episode 13/src/util/appStore';
-import Cart from './Episode 13/src/components/Cart';
+import appStore from './src/util/appStore';
+import Cart from './src/components/Cart';
 // import Pokemon from './Episode 12/src/components/Pokemon';
 
 //************************************************   LAZY LOADING    ************************************************
-const Grocery = lazy(() => import("./Episode 13/src/components/Grocery"));
+const Grocery = lazy(() => import("./src/components/Grocery"));
 
-const Pokemon = lazy(() => import("./Episode 13/src/components/Pokemon"));
+const Pokemon = lazy(() => import("./src/components/Pokemon"));
 //<Suspense fallback={<h1>Loading Grocery Page. Please wait</h1>}>
 
 //************************************************   set react context **********************************************

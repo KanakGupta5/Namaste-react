@@ -92,6 +92,7 @@ Epsiode 12
     - useSelector
     - useDispatch
 - Immer
+-RTK Query
 
 Epsiode 13
 
